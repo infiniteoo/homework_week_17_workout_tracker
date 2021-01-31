@@ -2,13 +2,28 @@
 /* const Workout = require('../models/schema') */
 const db = require('../models/db')
 
-
 /* mongoose.connect(process.env.CONNECTION_STRING, {
   useNewUrlParser: true,
   useFindAndModify: false
 }) */
 
-db.collection('workouts').deleteMany({})
+db.once('open', () => {
+  console.log(db.collection('workouts'))
+  db.collection('workouts').deleteMany({})
+    .then(() => db.collection('workouts').insertMany(workoutSeed))
+    .then(data => {
+      console.log(data.result.n + ' records inserted!')
+      process.exit(0)
+    })
+    .catch(err => {
+      console.error(err)
+      process.exit(1)
+    })
+
+  console.log('MongoDB connection established.')
+})
+
+/* db.collection('workouts').deleteMany({})
   .then(() => db.collection('workouts').insertMany(workoutSeed))
   .then(data => {
     console.log(data.result.n + ' records inserted!')
@@ -17,7 +32,7 @@ db.collection('workouts').deleteMany({})
   .catch(err => {
     console.error(err)
     process.exit(1)
-  })
+  }) */
 
 const workoutSeed = [
   {

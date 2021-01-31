@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const db = mongoose.connection
 
 require('dotenv').config({ path: '../.env' })
 
@@ -15,8 +14,6 @@ const workoutSchema = mongoose.Schema({
   }]
 })
 
-const Workout = mongoose.model('Workout', workoutSchema)
-
 const connectionString = process.env.CONNECTION_STRING
 
 if (!connectionString) {
@@ -29,6 +26,7 @@ mongoose.connect(connectionString, {
   useFindAndModify: false,
   useUnifiedTopology: true
 })
+const db = mongoose.connection
 
 db.on('error', err => {
   console.log('MongoDB error: ' + err.message)
@@ -36,5 +34,7 @@ db.on('error', err => {
 })
 
 db.once('open', () => console.log('MongoDB connection established.'))
+
+mongoose.model('Workout', workoutSchema)
 
 module.exports = db
