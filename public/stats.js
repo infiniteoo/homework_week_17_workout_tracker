@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 // get all workout data from back-end
 
 fetch('/api/workouts/range')

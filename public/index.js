@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 init()
 
 async function init () {
