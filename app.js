@@ -3,6 +3,8 @@ const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
+require('dotenv').config()
+console.log(process.env)
 
 const htmlRouter = require('./routes/html-routes')
 const apiRouter = require('./routes/api-routes')

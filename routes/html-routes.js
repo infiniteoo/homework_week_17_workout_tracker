@@ -11,7 +11,7 @@ router.get('/stats', function (req, res, next) {
 })
 
 router.get('/exercise', function (req, res, next) {
-  res.render('exercise', { title: 'Stats' })
+  res.render('exercise', { title: 'New Exercise' })
 })
 
 module.exports = router
