@@ -8,7 +8,6 @@ const db = require('../models/db')
 }) */
 
 db.once('open', () => {
-  console.log(db.collection('workouts'))
   db.collection('workouts').deleteMany({})
     .then(() => db.collection('workouts').insertMany(workoutSeed))
     .then(data => {
@@ -22,17 +21,6 @@ db.once('open', () => {
 
   console.log('MongoDB connection established.')
 })
-
-/* db.collection('workouts').deleteMany({})
-  .then(() => db.collection('workouts').insertMany(workoutSeed))
-  .then(data => {
-    console.log(data.result.n + ' records inserted!')
-    process.exit(0)
-  })
-  .catch(err => {
-    console.error(err)
-    process.exit(1)
-  }) */
 
 const workoutSeed = [
   {

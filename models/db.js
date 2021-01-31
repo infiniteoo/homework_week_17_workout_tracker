@@ -10,9 +10,12 @@ const workoutSchema = mongoose.Schema({
     duration: Number,
     weight: Number,
     reps: Number,
-    sets: Number
+    sets: Number,
+    distance: Number
   }]
 })
+
+mongoose.model('Workout', workoutSchema)
 
 const connectionString = process.env.CONNECTION_STRING
 
@@ -34,7 +37,5 @@ db.on('error', err => {
 })
 
 db.once('open', () => console.log('MongoDB connection established.'))
-
-mongoose.model('Workout', workoutSchema)
 
 module.exports = db

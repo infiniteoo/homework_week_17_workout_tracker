@@ -65,16 +65,16 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
-
-
 ### Built With
 
-* []()
-* []()
-* []()
+[![node](https://aleen42.github.io/badges/src/node.svg)](https://aleen42.github.io/badges/src/node.svg)
+[![eslint](https://aleen42.github.io/badges/src/eslint.svg)](https://aleen42.github.io/badges/src/eslint.svg)
+[![javascript](https://aleen42.github.io/badges/src/javascript.svg)](https://aleen42.github.io/badges/src/javascript.svg)
+[![github](https://aleen42.github.io/badges/src/github.svg)](https://aleen42.github.io/badges/src/github.svg)
+[![npm](https://aleen42.github.io/badges/src/npm.svg)](https://aleen42.github.io/badges/src/npm.svg)
+[![visual_studio_code](https://aleen42.github.io/badges/src/visual_studio_code.svg)](https://aleen42.github.io/badges/src/visual_studio_code.svg)
+
+
 
 
 
@@ -95,7 +95,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/infiniteoo/homework_week_17_workout_tracker.git
    ```
 2. Install NPM packages
    ```sh
