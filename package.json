@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "lint": "eslint.js"
+    "lint": "eslint --quiet .",
+    "fix": "eslint --fix .",
+    "watch": "nodemon server.js",
+    "test": "npm run lint"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
