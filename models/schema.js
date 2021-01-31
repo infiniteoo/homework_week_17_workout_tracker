@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const workoutSchema = mongoose.Schema({
-  day: Date(),
+  day: String,
   exercises: [{
     type: String,
     name: String,

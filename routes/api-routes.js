@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router()
 
 /* GET users listing. */
-router.put('/api/workouts', function (req, res, next) {
-  console.log('req, res, next', req, res, next)
+router.get('/workouts', function (req, res, next) {
+  console.log('/workouts get route touched')
 })
 
 module.exports = router
