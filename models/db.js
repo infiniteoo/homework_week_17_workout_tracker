@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 require('dotenv').config({ path: '../.env' })
 
 const workoutSchema = mongoose.Schema({
-  day: String,
+  day: Date,
   exercises: [{
     type: String,
     name: String,
@@ -24,11 +24,15 @@ if (!connectionString) {
   process.exit(1)
 }
 
-mongoose.connect(connectionString, {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true
-})
+mongoose.connect(
+  process.env.MONGODB_URI || connectionString,
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+
+  })
 const db = mongoose.connection
 
 db.on('error', err => {
