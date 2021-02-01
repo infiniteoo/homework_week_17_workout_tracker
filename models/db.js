@@ -25,7 +25,7 @@ if (!connectionString) {
 }
 
 mongoose.connect(
-  process.env.MONGODB_URI || connectionString,
+  connectionString,
   {
     useNewUrlParser: true,
     useFindAndModify: false,
