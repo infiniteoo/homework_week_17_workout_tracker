@@ -4,6 +4,7 @@ require('dotenv').config({ path: '../.env' })
 
 const workoutSchema = mongoose.Schema({
   day: Date,
+  totalDuration: Number,
   exercises: [{
     type: String,
     name: String,

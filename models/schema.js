@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const workoutSchema = mongoose.Schema({
   day: Date,
+  totalDuration: Number,
   exercises: [{
     type: String,
     name: String,

@@ -3,7 +3,6 @@ const { ObjectId } = require('mongodb')
 const db = require('../models/db')
 const router = express.Router()
 
-/* GET users listing. */
 router.get('/workouts', function (req, res, next) {
   console.log('/workouts GET route touched')
   db.collection('workouts').find({}).toArray((err, items) => {
@@ -36,6 +35,7 @@ router.put('/workouts/:id', function (req, res) {
   if (req.params.id === 'undefined') {
     const finalObjectToInsert = {
       day: new Date().setDate(new Date().getDate()),
+      totalDuration: req.body.duration,
       exercises: [req.body]
     }
     db.collection('workouts').insertOne(finalObjectToInsert, results => {
@@ -43,15 +43,33 @@ router.put('/workouts/:id', function (req, res) {
       res.json(req.body)
     })
   } else {
-    db.collection('workouts').updateOne(
-      { _id: ObjectId(req.params.id) },
-      {
-        $push: {
-          exercises: req.body
-        }
+    let updatedDuration = 0
+    db.collection('workouts').find(ObjectId(req.params.id)).toArray((err, items) => {
+      if (err) {
+        throw err
+      } else {
+        console.log('we found this ---------------', items[0].exercises[0].duration)
+        updatedDuration = items[0].exercises[0].duration
+        console.log('updatedDuration:', updatedDuration)
+        updatedDuration += req.body.duration
+        console.log('updatedDuration:', updatedDuration)
+        doIt()
       }
-    )
-    res.json(req.body)
+    })
+    function doIt () {
+      db.collection('workouts').updateOne(
+        { _id: ObjectId(req.params.id) },
+        {
+          $push: {
+            exercises: req.body
+          },
+          $set: {
+            totalDuration: updatedDuration
+          }
+        }
+      )
+      res.json(req.body)
+    }
   }
 })
 
@@ -61,6 +79,7 @@ router.post('/workouts', function (req, res) {
   console.log('weve touched the POST /api/workouts route:', req.body)
   const finalObjectToInsert = {
     day: new Date().setDate(new Date().getDate()),
+    totalDuration: req.body.duration,
     exercises: [req.body]
   }
   db.collection('workouts').insertOne(finalObjectToInsert, results => {
