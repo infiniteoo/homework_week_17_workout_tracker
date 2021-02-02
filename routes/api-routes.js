@@ -27,7 +27,7 @@ router.get('/workouts/range', function (req, res) {
   })
 })
 
-// instead of writing a new entry into the database, this should actually add a new exercise to the array of the supplied id in the req.params
+// this adds a new exercise to the  array of the supplied id's workout in req.params
 router.put('/workouts/:id', function (req, res) {
   console.log('the id of the param is:', req.params.id)
   console.log('weve touched the PUT /api/workouts/:id route:', req.body)
@@ -48,15 +48,20 @@ router.put('/workouts/:id', function (req, res) {
       if (err) {
         throw err
       } else {
+        // there could be multiple exercises.
+        // need to iterate over exercises array and grab ALL durations and add to total
         console.log('we found this ---------------', items[0].exercises[0].duration)
-        updatedDuration = items[0].exercises[0].duration
+        items[0].exercises.forEach(element => {
+          updatedDuration += element.duration
+        })
+
         console.log('updatedDuration:', updatedDuration)
         updatedDuration += req.body.duration
         console.log('updatedDuration:', updatedDuration)
-        doIt()
+        updateWorkout()
       }
     })
-    function doIt () {
+    function updateWorkout () {
       db.collection('workouts').updateOne(
         { _id: ObjectId(req.params.id) },
         {
