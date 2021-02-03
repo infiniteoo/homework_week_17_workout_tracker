@@ -5,7 +5,7 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
+![example gif](/examples/example_newWorkout.gif)
 
 <!-- PROJECT LOGO -->
 <br />
@@ -63,7 +63,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+Utilizing what we've learned so far in class,  the objective for this week's homework assignment was to take supplied starter code from the front-end, and create the back-end server and accompanying HTML and API routes to build our workout tracker.
+
+![example gif](/examples/example_charts.gif)
+
+With the power of MongoDB and Mongoose database structure schemas, combined with the ease and versatility of Node.js, this repository is the result.
 
 ### Built With
 
@@ -107,9 +111,13 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+* When the user connects, stats from last workout saved to the database is displayed.  
+* From here, the user can continue this workout or create a new one.  
+* If the user chooses to continue the workout, every new exercise created will be added to the existing workout's database entry.
+* If the user chooses to make a new workout, a new entry in the database is created and each new exercise will be added to the new workout's database entry.
+* Every workout in the database has a "totalDuration" variable, which keeps a cumulative total of the amount of minutes across all exercises. 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://github.com/infiniteoo/homework_week_17_workout_tracker)_
 
 
 
@@ -143,20 +151,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/doormant) - email
+Troy Dorman - Twitter: [@doormant](https://twitter.com/doormant)   Email - troydorman@gmail.com
 
 Project Link: [https://github.com/infiniteoo/homework_week_17_workout_tracker](https://github.com/infiniteoo/homework_week_17_workout_tracker)
 
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
-
-
+Live Interactive Link: [https://aqueous-reef-38770.herokuapp.com/](https://aqueous-reef-38770.herokuapp.com/)
 
 
 
